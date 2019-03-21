@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" media="screen"/>
+    <link rel="stylesheet" th:href="@{/css/header-style.css}" href="../static/css/header-style.css" />
+</head>
+<body>
+
+<div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" th:href="@{/wspbookingapp/Admin/home}">Home</a>
+                    <ul class="nav navbar-nav">
+                        <li><a th:href="@{/wspbookingapp/users/logout}">LogOut</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="jumbotron">
+            <div class="row text-center">
+                <div class="row">
+                   <h2>Admin page</h2>
+                <h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>
