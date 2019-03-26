@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author Madhu
+ *
+ */
 @Entity
 @Table(name="bookingdetails")
 public class BookingDetails {
@@ -26,7 +30,38 @@ public class BookingDetails {
 	
 	@Column(name="bookingdate",nullable=false)
 	private Date bookingDate;
-	
+
+	public Long getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(Long bookingId) {
+		this.bookingId = bookingId;
+	}
+
+	public Time getInTime() {
+		return inTime;
+	}
+
+	public void setInTime(Time inTime) {
+		this.inTime = inTime;
+	}
+
+	public Time getOutTime() {
+		return outTime;
+	}
+
+	public void setOutTime(Time outTime) {
+		this.outTime = outTime;
+	}
+
+	public Date getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
+	}
 	
 	
 
