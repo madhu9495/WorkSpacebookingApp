@@ -1,10 +1,14 @@
 package com.app.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +24,9 @@ public class Employee {
 	
 	@Column(name="location",length=50,nullable=false)
 	private String location;
+	
+	@OneToMany(mappedBy = "employeeFKey", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List <BookingDetails> bookingdetails;
 
 	public Long getEmpId() {
 		return empId;
