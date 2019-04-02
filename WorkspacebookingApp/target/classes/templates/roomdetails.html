@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>JobDetails</title>
+    <title>Room Details</title>
     <th:block th:include="layout/header"></th:block>
 </head>
 <body>
@@ -21,8 +21,8 @@
                 <td th:text="${roomdetail.roomName}">RoomName</td>
                 <td th:text="${roomdetail.location}">Location</td>
                 <td th:text="${roomdetail.capacity}">capacity</td>
-                <td><a th:href="${'/wspbookingapp/Admin/roomdetails/edit/' + jobdetail.roomId}" class="btn btn-default">Edit</a></td>
-                <td><a th:href="${'/wspbookingapp/Admin/roomdetails/delete/' + jobdetail.roomId}" class="btn btn-danger">Delete</a></td>
+                <td><a th:href="${'/wspbookingapp/Admin/roomdetails/edit/' + roomdetail.roomId}" class="btn btn-default">Edit</a></td>
+                <td><a th:href="${'/wspbookingapp/Admin/roomdetails/delete/' + roomdetail.roomId}" class="btn btn-danger">Delete</a></td>
             </tr>
         </table>
     </div>

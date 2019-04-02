@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import com.app.entities.ConferenceRoom;
+import com.app.entities.Employee;
+import com.app.service.impl.EmployeeDetailsServiceImpl;
 import com.app.service.impl.RoomDetailsServiceImpl;
 
 
@@ -25,10 +27,17 @@ public class AdminController {
 	@Autowired
 	RoomDetailsServiceImpl roomDetailsServiceImpl;
 	
+	@Autowired
+	EmployeeDetailsServiceImpl employeeDetailServiceImpl;
+	
 	@GetMapping(value="/home")
 	 public String index() {
 	        return "admin-home";
 	    }
+	
+	
+	/*@@@@@@@@@ CRUD Operations for Conference Room Entity @@@@@@@@@@*/
+	
 	
 	@GetMapping(value="/addroom")
 	public String CreateRoomDetails(Model model) {
@@ -66,5 +75,44 @@ public class AdminController {
 	        return "redirect:/wspbookingapp/Admin/allroomdetails";
 	    }
 	 
-
+     /*@@@@@@@@@@@@@@ CRUD Operations for Employee Entity @@@@@@@@*/
+	 
+		@GetMapping(value="/addEmployee")
+		public String AddEmployee(Model model) {
+			model.addAttribute("employeedetails", new Employee());
+			return "editemp";
+		}
+		
+		 @PostMapping(value = "/saveEmployee")
+		 public String saveEmployee(Employee employee, Model model) {
+			 
+			 Employee emp= employeeDetailServiceImpl.saveEmployee(employee);
+			 
+		     model.addAttribute("emp",emp);
+		      return "AddEmployeeSuccess";
+		    }
+		 @GetMapping(value="/allEmployees")
+		 public String AllEmployees(Model model) {
+				model.addAttribute("employees", employeeDetailServiceImpl.findAllEmployees());
+				return "allemployees";
+			}
+		 
+		 @GetMapping(value="/Employee/edit/{id}")
+		 public String UpdateEmployee(Model model, @PathVariable(value = "id") Long empid) {
+			 
+			 model.addAttribute("employeedetails",employeeDetailServiceImpl.findEmpById(empid));
+			 
+			 return "editemp";
+			 
+		 }
+		 
+		 @GetMapping(value = "/Employee/delete/{id}")
+		  public String DeleteEmployee(@PathVariable(name = "id") Long empid) {
+		        employeeDetailServiceImpl.DeleteEmpById(empid);
+		        return "redirect:/wspbookingapp/Admin/allEmployees";
+		    }
+		 
+		 
+		 
+	 
 }

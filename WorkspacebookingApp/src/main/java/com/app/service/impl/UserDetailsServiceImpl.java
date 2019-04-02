@@ -32,4 +32,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		UserDetails userDetails = (UserDetails)user; 
 		return userDetails;
 	}
+	
 }

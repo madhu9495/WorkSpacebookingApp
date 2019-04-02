@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Employee Details</title>
+    <th:block th:include="layout/header"></th:block>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(employees)}">
+        <h2 align="center">All Employee Details</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>empId</th>
+                <th>empName</th>
+                <th>fullName</th>
+                <th>location</th>
+                <th>country</th>
+            </tr>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.empId}">empId</td>
+                <td th:text="${employee.empName}">empName</td>
+                 <td th:text="${employee.fullName}">fullName</td>
+                <td th:text="${employee.location}">location</td>
+                <td th:text="${employee.country}">country</td>
+                <td><a th:href="${'/wspbookingapp/Admin/Employee/edit/' + employee.empId}" class="btn btn-default">Edit</a></td>
+                <td><a th:href="${'/wspbookingapp/Admin/Employee/delete/' + employee.empId}" class="btn btn-danger">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
