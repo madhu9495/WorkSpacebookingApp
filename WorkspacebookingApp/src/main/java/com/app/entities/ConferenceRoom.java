@@ -27,7 +27,7 @@ public class ConferenceRoom {
 	@Column(name="capacity",length=50,nullable=false)
 	private int capacity;
 	
-	@ManyToMany(mappedBy = "BookingDetails")
+	@ManyToMany(mappedBy = "rooms")
 	public List<BookingDetails> bookingdetails;
 
 	public List<BookingDetails> getBookingdetails() {

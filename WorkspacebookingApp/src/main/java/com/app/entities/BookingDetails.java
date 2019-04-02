@@ -39,7 +39,7 @@ public class BookingDetails {
 	private Date bookingDate;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="empId")
+	@JoinColumn(name="empId",nullable=false)
 	private Employee employeeFKey;
 	
 	@ManyToMany

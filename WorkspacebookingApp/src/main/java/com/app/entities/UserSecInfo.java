@@ -21,7 +21,7 @@ public class UserSecInfo implements Serializable {
 	private String password;
 	
 	@OneToOne
-	@JoinColumn(name="empId")
+	@JoinColumn(name="empId",nullable=false)
 	private Employee emp;
 	
 	public Employee getEmp() {
@@ -30,11 +30,11 @@ public class UserSecInfo implements Serializable {
 	public void setEmp(Employee emp) {
 		this.emp = emp;
 	}
-	@Column(name="role",length=50)	
+	@Column(name="role",length=50,nullable=false)	
 	private String role;
 	
 	
-	@Column(name="enabled")	
+	@Column(name="enabled",length=1,nullable=false)	
 	private short enabled;
 	
 	public String getUserName() {
