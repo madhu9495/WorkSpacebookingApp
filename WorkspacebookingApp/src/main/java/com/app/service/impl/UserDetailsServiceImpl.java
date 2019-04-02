@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.impl.UserInfoRepository;
-import com.app.entities.UserInfo;
+import com.app.entities.UserSecInfo;
 
 
 
@@ -24,10 +24,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		UserInfo userInfo = userInfoRepository.getActiveUser(userName);
-		GrantedAuthority authority = new SimpleGrantedAuthority(userInfo.getRole());
+		UserSecInfo usersecInfo = userInfoRepository.getActiveUser(userName);
+		GrantedAuthority authority = new SimpleGrantedAuthority(usersecInfo.getRole());
 		
-		User user = new User(userInfo.getUserName(),userInfo.getPassword(),Arrays.asList(authority));
+		User user = new User(usersecInfo.getUserName(),usersecInfo.getPassword(),Arrays.asList(authority));
 		
 		UserDetails userDetails = (UserDetails)user; 
 		return userDetails;

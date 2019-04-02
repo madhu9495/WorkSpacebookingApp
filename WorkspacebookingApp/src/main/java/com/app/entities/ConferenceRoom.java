@@ -1,10 +1,13 @@
 package com.app.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +26,17 @@ public class ConferenceRoom {
 	
 	@Column(name="capacity",length=50,nullable=false)
 	private int capacity;
+	
+	@ManyToMany(mappedBy = "BookingDetails")
+	public List<BookingDetails> bookingdetails;
+
+	public List<BookingDetails> getBookingdetails() {
+		return bookingdetails;
+	}
+
+	public void setBookingdetails(List<BookingDetails> bookingdetails) {
+		this.bookingdetails = bookingdetails;
+	}
 
 	public Long getRoomId() {
 		return roomId;

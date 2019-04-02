@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -41,6 +42,7 @@ public class BookingDetails {
 	@JoinColumn(name="empId")
 	private Employee employeeFKey;
 	
+	@ManyToMany
 	@JoinTable(name = "room_bookings",
             joinColumns = {@JoinColumn(name = "res_booking_id", referencedColumnName = "bookingId")},
             inverseJoinColumns = {@JoinColumn(name = "room_no", referencedColumnName = "roomId")})
@@ -78,6 +80,22 @@ public class BookingDetails {
 
 	public void setBookingDate(Date bookingDate) {
 		this.bookingDate = bookingDate;
+	}
+
+	public Employee getEmployeeFKey() {
+		return employeeFKey;
+	}
+
+	public void setEmployeeFKey(Employee employeeFKey) {
+		this.employeeFKey = employeeFKey;
+	}
+
+	public List<ConferenceRoom> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(List<ConferenceRoom> rooms) {
+		this.rooms = rooms;
 	}
 	
 	
