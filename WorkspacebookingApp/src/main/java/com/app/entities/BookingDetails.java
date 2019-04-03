@@ -38,6 +38,9 @@ public class BookingDetails {
 	@Column(name="bookingdate",nullable=false)
 	private Date bookingDate;
 	
+	@Column(name="bookingstatus",nullable=false)
+	private String bookingstatus;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="empId",nullable=false)
 	private Employee employeeFKey;
@@ -96,6 +99,14 @@ public class BookingDetails {
 
 	public void setRooms(List<ConferenceRoom> rooms) {
 		this.rooms = rooms;
+	}
+
+	public String getBookingstatus() {
+		return bookingstatus;
+	}
+
+	public void setBookingstatus(String bookingstatus) {
+		this.bookingstatus = bookingstatus;
 	}
 	
 	
